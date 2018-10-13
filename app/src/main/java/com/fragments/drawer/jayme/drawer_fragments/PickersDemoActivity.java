@@ -24,8 +24,8 @@ import java.util.Date;
 
 public class PickersDemoActivity extends Fragment implements View.OnClickListener {
 
-    private EditText dateEditText;
-    private EditText timeEditText;
+    private static EditText dateEditText;
+    private static EditText timeEditText;
 
     @Nullable
     @Override
@@ -84,12 +84,14 @@ public class PickersDemoActivity extends Fragment implements View.OnClickListene
                 time = hourOfDay + ":" + minute + " PM";
             } else if(hourOfDay == 0){
                 time = "12:" + minute + " AM";
-            } else {
+            }
+            else {
                 time = hourOfDay + ":" + minute + " AM";
             }
-
             Toast.makeText(getActivity(), time, Toast.LENGTH_SHORT).show();
+            timeEditText.setText(String.format(time));
         }
+
     }
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -111,6 +113,7 @@ public class PickersDemoActivity extends Fragment implements View.OnClickListene
             // Do something with the date chosen by the user
             month += 1; // increment month since month starts with 0
             Toast.makeText(getActivity(), year+"-"+month+"-"+dayOfMonth, Toast.LENGTH_SHORT).show();
+            dateEditText.setText(String.format(year + "-" + month + "-" + dayOfMonth));
         }
     }
 }
