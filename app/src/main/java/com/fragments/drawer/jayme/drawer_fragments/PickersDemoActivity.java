@@ -1,12 +1,12 @@
-/*package com.fragments.drawer.jayme.drawer_fragments;
+package com.fragments.drawer.jayme.drawer_fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -30,16 +30,16 @@ public class PickersDemoActivity extends Fragment implements View.OnClickListene
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.activity_text_field_demo, container, false);
+        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.activity_pickers_demo, container, false);
 
 
-
-        dateEditText = layout.findViewById(R.id.date_editText);
-        timeEditText = layout.findViewById(R.id.time_editText);
+        dateEditText = view.findViewById(R.id.date_editText);
+        timeEditText = view.findViewById(R.id.time_editText);
 
         dateEditText.setOnClickListener(this);
         timeEditText.setOnClickListener(this);
-        return layout;
+        return view;
     }
 
     @Override
@@ -52,13 +52,14 @@ public class PickersDemoActivity extends Fragment implements View.OnClickListene
                 datePickerFragment.show(getFragmentManager(), "datePicker");
                 break;
 
+
             case R.id.time_editText:
                 DialogFragment timePickerFragment = new TimePickerFragment();
                 timePickerFragment.show(getFragmentManager(), "timePicker");
                 break;
+
         }
     }
-
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
@@ -112,4 +113,4 @@ public class PickersDemoActivity extends Fragment implements View.OnClickListene
             Toast.makeText(getActivity(), year+"-"+month+"-"+dayOfMonth, Toast.LENGTH_SHORT).show();
         }
     }
-}*/
+}
